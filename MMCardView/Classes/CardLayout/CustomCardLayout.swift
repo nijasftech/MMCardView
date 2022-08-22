@@ -9,6 +9,7 @@
 import UIKit
 
 let BottomPercent:CGFloat = 0.85
+let screenOffset:CGFloat = 326.0
 
 public enum SequenceStyle:Int {
     case normal
@@ -194,6 +195,9 @@ public class CustomCardLayout: UICollectionViewLayout {
                 }
             case .normal:
                 attribute.frame = currentFrame
+        }
+        if (self.collectionView?.contentOffset.y)! > screenOffset {
+            self.collectionView?.setContentOffset(CGPoint(x: .zero, y: screenOffset), animated: true)
         }
     }
     
